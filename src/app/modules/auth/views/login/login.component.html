@@ -18,10 +18,12 @@
           m-0
           focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none" id="exampleInputEmail2"
                 aria-describedby="emailHelp" placeholder="Enter email">
-            <ng-container *ngIf="loginForm.get('email')?.errors as errors">
-                <small *ngIf="errors['required']" class="block mt-1 text-xs text-red-400">email is required.</small>
-                <small *ngIf="errors['email']" class="block mt-1 text-xs text-red-400">invalid email.</small>
-            </ng-container>
+            <ng-template [ngIf]="loginForm.touched">
+                <ng-container *ngIf="loginForm.get('email')?.errors as errors">
+                    <small *ngIf="errors['required']" class="block mt-1 text-xs text-red-400">email is required.</small>
+                    <small *ngIf="errors['email']" class="block mt-1 text-xs text-red-400">invalid email.</small>
+                </ng-container>
+            </ng-template>
         </div>
         <div class="form-group mb-6">
             <label for="exampleInputPassword2" class="form-label inline-block mb-2 text-gray-400">Password</label>
@@ -40,10 +42,14 @@
           m-0
           focus:text-gray-700 focus:bg-white focus:border-indigo-500 focus:outline-none" id="exampleInputPassword2"
                 placeholder="Password">
+            <ng-template [ngIf]="loginForm.touched">
                 <ng-container *ngIf="loginForm.get('password')?.errors as errors">
-                    <small *ngIf="errors['required']" class="block mt-1 text-xs text-red-400">password is required.</small>
-                    <small *ngIf="errors['minlength']" class="block mt-1 text-xs text-red-400">Must be atleast 8 characters({{errors['minlength']['actualLength']}}/8).</small>
+                    <small *ngIf="errors['required']" class="block mt-1 text-xs text-red-400">password is
+                        required.</small>
+                    <small *ngIf="errors['minlength']" class="block mt-1 text-xs text-red-400">Must be atleast 8
+                        characters({{errors['minlength']['actualLength']}}/8).</small>
                 </ng-container>
+            </ng-template>
         </div>
         <div class="flex justify-between items-center mb-6">
             <div class="form-group form-check">

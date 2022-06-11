@@ -1,27 +1,26 @@
 # BugPawnClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+Demo Angular Client to test BugPawn Rails Project API
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+NodeJS >= 12.xx.xx
+Yarn >= 1.22.xx  # can be installed using `npm i -g yarn`, if not already
+```
+**NOTE:** The Rails Backend must be running in order to test/run this project, backend project [BugPawn](https://github.com/Hashamjoiya/BugPawn.git)
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. clone the repository, `git clone https://github.com/Hashamjoiya/bug-pawn-client.git`
+2. `cd bug-pawn-client`
+3. `yarn install`
+4. `yarn start`, this will spin up angular dev server on port `4200`
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Structure
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Angular is divided into modules and services, can be found under the `src/app`. Each module then contains its own underlying views/components etc.

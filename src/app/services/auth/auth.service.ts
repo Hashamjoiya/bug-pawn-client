@@ -34,6 +34,10 @@ export class AuthService {
     return this.user.asObservable().pipe(map(data => !!data?.accessToken))
   }
 
+  public get authenticated() {
+    return !!this.user.value?.accessToken
+  }
+
   login(data: LoginFormData) {
     return this.http.post(environment.apiPath + 'users/sign_in', { user: data },
       {
@@ -56,6 +60,12 @@ export class AuthService {
     if (!isAuthenticated) return;
 
     return this.user.next(null);
+  }
+
+  public get authHeaders() {
+    const _headers = headers
+    if (!this.authenticated) return _headers
+    return AuthenticatedUser.getHeaders(this.user.value as AuthenticatedUserData)
   }
 
 

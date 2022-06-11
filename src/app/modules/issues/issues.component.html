@@ -1,3 +1,23 @@
-<div class="shadow-md content-container">
-    asdsdas
+<div class="content-container" *ngIf="listData">
+    <div class="card shadow-md flex flex-row items-end" *ngIf="info">
+        <div class="text-2xl font-semibold mr-4">Total: {{info.total}}</div>
+        <div class="text-gray-300 mr-2">Opened: {{info.opened}}</div>
+        <div class="text-gray-300">Closed: {{info.closed}}</div>
+    </div>
+    <div class="list">
+        <div class="issue" *ngFor="let issue of listData?.data; let i=index" [ngClass]="{'border-b-2 border-gray-600': i<(listData.data.length-1)}">
+            <div class="subpixel-antialiased text-lg text-slate-200" [ngClass]="{'text-stone-500': issue.status === 'closed'}">{{issue.title}} {{issue.status}}</div>
+            <div class="text-sm flex">tags: 
+                <div *ngFor="let tag of issue.tags" class="mx-2 px-2 bg-indigo-500 rounded-xl">{{tag}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center item-center py-4">
+        <div *ngFor="let page of pages" class="mx-2 px-4 py-2 rounded-lg text-xl" (click)="changePage(page)" [ngClass]="{
+            'border-2 border-slate-200 text-slate-200 cursor-pointer' : (page !== listData.currentPage),
+            'bg-indigo-500' : (page === listData.currentPage)
+        }">
+            {{page}}
+        </div>
+    </div>
 </div>

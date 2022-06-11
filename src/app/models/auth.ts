@@ -21,4 +21,14 @@ export class AuthenticatedUser {
             client: requestHeaders.get('client')
         }
     }
+
+    public static getHeaders(data: AuthenticatedUserData) {
+        return new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'uid': data.uid || '',
+            'client': data.client || '',
+            'access-token': data.accessToken || '',
+        })
+    }
 }
